@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+# Team Name: Cadabra
+# Team Members: Dominick Blanco, Chase Dixon, Bryce Dickerson, Tommy Deiser
+# Team Emails: Dblanco@nd.edu, Cdixon5@nd.edu, Bdicker2@nd.edu, Tdeiser@nd.edu
+# Project: BlackJack Simulator with Help Feature and Casino Mode 
+# File Contents: This is Executable the Player will Call 
+
+import sys
+from time import sleep
+sys.path.insert(1, "Functions/"); 
+
+from BlackJack_functions import *
+from help_function import *
+from title import *
+from gamemodes import *
+from main_menu import *
+
+def main():
+	title()
+	# if carryon is True then Continue, if false then Quit 
+	carryon = True 
+    
+	# loop dependent on whether carryon is true or false
+	while( carryon == True ):
+        
+		# Get User Option 
+		choice = main_menu()
+		
+		# Freeplay Option 
+		if choice == "1":
+			print ("\tRedirecting to freeplay . . .") ; sleep(1.2)
+			freeplay()
+        
+		# Casino Gamemode Option 
+		elif choice == "2":
+			print ("\tRedirecting to casino . . .") ; sleep(1.2)
+			casino_mode()
+        
+		# Move Calculator Option 
+		elif choice == "3":
+			print ("\tRedirecting to move calculator . . .") ; sleep(1.2)
+			move_calculator()
+
+		# Quit Option | If carryon is False then Quit | If carryon is True then Quit 
+		elif choice == "q":
+			carryon = False;
+			print("\n\n\tGoodbye.\n") ; sleep(1.2)
+			print("\033c")
+			break
+      
+		# Invalid Input 
+		else:
+			print("\tInvalid input!") ; sleep(1.2)
+	
+	return 0
+
+if __name__ == '__main__':
+    main()
